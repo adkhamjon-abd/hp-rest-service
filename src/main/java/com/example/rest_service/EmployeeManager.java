@@ -6,10 +6,9 @@ import java.util.List;
 
 @Service
 public class EmployeeManager {
-    private final Employees employees;
+    private Employees employees = new Employees();
 
     public EmployeeManager(){
-        employees = new Employees();
         employees.setEmployeeList(List.of(
                 new Employee(1, "John", "Doe", "john.doe@example.com", "Developer"),
                 new Employee(2, "Jane", "Smith", "jane.smith@example.com", "Manager"),
@@ -20,5 +19,9 @@ public class EmployeeManager {
 
     public Employees getEmployees(){
         return employees;
+    }
+
+    public void addEmployees(Employee employee) {
+        employees.getEmployeeList().add(employee);
     }
 }

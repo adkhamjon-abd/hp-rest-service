@@ -1,9 +1,7 @@
 package com.example.rest_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
@@ -15,8 +13,14 @@ public class EmployeeController {
         this.employeeManager = employeeManager;
     }
 
-    @GetMapping("/employees")
+    @GetMapping("employees")
     public Employees getEmployees(){
         return employeeManager.getEmployees();
+    }
+
+    @PostMapping("/add")
+    public void addEmployees(@RequestBody Employee employee){
+        employeeManager.addEmployees(employee);
+        System.out.println("Successfully added");
     }
 }
